@@ -1,8 +1,6 @@
 
 
 
-
-
 # -*- coding: utf-8 -*-
 
 
@@ -82,7 +80,7 @@ if __name__ == '__main__':
     print(len(f_tsn_web))
 
     for code in f_tsn_web:
-        url = 'https://jp.indeed.com/jobs?q={0}&l='.format(code)
+        url = 'https://jp.indeed.com/jobs?q={0}&l=%E6%9D%B1%E4%BA%AC%E9%83%BD'.format(code)
 
         html = call_page(url)
         print(url)
@@ -111,7 +109,7 @@ if __name__ == '__main__':
 
 
 
-#
+
 # create table Tokyo_TSN (id int not null primary key auto_increment,
 # Python  float,
 # Glang  float,
@@ -120,3 +118,4 @@ if __name__ == '__main__':
 # Docker  float,
 # openstack  float,
 # LastTime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP) engine=InnoDB  charset=utf8;
+# #
