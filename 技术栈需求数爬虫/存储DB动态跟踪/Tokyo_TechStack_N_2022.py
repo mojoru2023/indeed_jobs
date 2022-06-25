@@ -59,7 +59,7 @@ def insertDB(content):
     cursor = connection.cursor()
     try:
 
-        f_6 = "%s," *6
+        f_6 = "%s," *7
         cursor.executemany('insert into Tokyo_TSN ({0}) values ({1})'.format(f_FS_DB,f_6[:-1]), content)
         connection.commit()
         connection.commit()
@@ -72,8 +72,8 @@ def insertDB(content):
 
 if __name__ == '__main__':
     big_list = []
-    TS_lang_DB = 'Python,Glang,Echo,Gin,Docker,openstack'
-    TS_lang_Web = 'Python,Glang,Echo,Gin,Docker,openstack'
+    TS_lang_DB = 'Python,Glang,Echo,Gin,Docker,openstack,k8s'
+    TS_lang_Web = 'Python,Glang,Echo,Gin,Docker,openstack,k8s'
     f_FS_web =TS_lang_Web
     f_FS_DB =TS_lang_DB
     f_tsn_web = f_FS_web.split(",")
@@ -118,4 +118,6 @@ if __name__ == '__main__':
 # Docker  float,
 # openstack  float,
 # LastTime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP) engine=InnoDB  charset=utf8;
-# #
+
+
+ # # alter table Tokyo_TSN add column k8s float after openstack ;
