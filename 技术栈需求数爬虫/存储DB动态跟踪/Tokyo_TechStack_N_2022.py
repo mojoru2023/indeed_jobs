@@ -59,7 +59,7 @@ def insertDB(content):
     cursor = connection.cursor()
     try:
 
-        f_6 = "%s," *7
+        f_6 = "%s," *14
         cursor.executemany('insert into Tokyo_TSN ({0}) values ({1})'.format(f_FS_DB,f_6[:-1]), content)
         connection.commit()
         connection.commit()
@@ -72,7 +72,7 @@ def insertDB(content):
 
 if __name__ == '__main__':
     big_list = []
-    TS_lang_DB = 'Python,Glang,Echo,Gin,Docker,openstack,k8s'
+    TS_lang_DB = 'Python,Glang,Echo,Gin,Docker,openstack,k8s,Python_age_45, Glang_age_45, Echo_age_45, Gin_age_45, Docker_age_45, openstack_age_45, k8s_age_45'
     TS_lang_Web = 'Python,Glang,Echo,Gin,Docker,openstack,k8s'
     f_FS_web =TS_lang_Web
     f_FS_DB =TS_lang_DB
@@ -96,7 +96,22 @@ if __name__ == '__main__':
         except:
             pass
 
+    for code in f_tsn_web:
+        url = 'https://jp.indeed.com/jobs?q={0}%E3%80%8E%E5%B9%B4%E9%BD%A2%E3%80%8F%2045%E6%AD%B3%E3%81%BE%E3%81%A7&l=%E6%9D%B1%E4%BA%AC%E9%83%BD'.format(code)
 
+        html = call_page(url)
+        print(url)
+        patt = re.compile('求人検索結果 (.*?) 件中 1 ページ目</div>',re.S)
+        items = re.findall(patt, html)
+        try:
+            if len(items) != 0:
+                for it in items:
+                    f = "".join(it.split(","))
+                    big_list.append(f)
+            else:
+                big_list.append("0")
+        except:
+            pass
     ff_l = []
     f_tup = tuple(big_list)
     ff_l.append((f_tup))
@@ -119,5 +134,19 @@ if __name__ == '__main__':
 # openstack  float,
 # LastTime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP) engine=InnoDB  charset=utf8;
 
+# Python_age_45, Glang_age_45, Echo_age_45, Gin_age_45, Docker_age_45, openstack_age_45, k8s_age_45,
 
- # # alter table Tokyo_TSN add column k8s float after openstack ;
+ # alter table Tokyo_TSN add column k8s float after k8s ;
+ # alter table Tokyo_TSN add column Python_age_45 float after k8s ;
+ # alter table Tokyo_TSN add column Glang_age_45 float after Python_age_45 ;
+ # alter table Tokyo_TSN add column Echo_age_45 float after Glang_age_45 ;
+ # alter table Tokyo_TSN add column Gin_age_45 float after Echo_age_45 ;
+ # alter table Tokyo_TSN add column Docker_age_45 float after Gin_age_45 ;
+ # alter table Tokyo_TSN add column openstack_age_45 float after Docker_age_45 ;
+ # alter table Tokyo_TSN add column k8s_age_45 float after openstack_age_45 ;
+ #
+
+
+
+
+
